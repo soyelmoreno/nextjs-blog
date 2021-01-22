@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import Date from '../../components/Date';
 import Layout, { siteTitle } from '../../components/Layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
@@ -18,7 +17,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-/** Return the list of file names (excluding .md) in the posts directory */
+/** Return the list of paths that will match this dynamic page */
 export async function getStaticPaths() {
   const paths = getAllPostIds();
   return {
