@@ -8,7 +8,7 @@ import { getAllPostIds, getPostData } from '../../lib/posts';
  * given id.
  */
 export async function getStaticProps({ params }) {
-  const postData = getPostData(params.id);
+  const postData = await getPostData(params.id);
   return {
     props: {
       postData
@@ -37,7 +37,7 @@ export default function Post({ postData }) {
       <h2>
         {postData.id} - {postData.date}
       </h2>
-      <div>Post content goes here</div>
+      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </Layout>
   );
 }
